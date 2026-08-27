@@ -62,3 +62,6 @@ Los datos de la aplicación viven en tres archivos JSON dentro de `zonas/data/`:
 ## Dependencias externas
 
 - `jsonschema`: valida la estructura de los archivos JSON antes de procesarlos.
+
+-----
+envio del trabajo a aii realizado
