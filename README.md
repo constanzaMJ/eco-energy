@@ -13,21 +13,25 @@ como fuente de datos.
 
 1. Clonar el repositorio:
 
-git clone  https://github.com/constanzaMJ/eco-energy
-cd eco-energy
+- git clone  https://github.com/constanzaMJ/eco-energy
+
+- cd eco-energy
 
 2. Crear y activar el entorno virtual:
- python -m venv venv
-venv\Scripts\Activate.ps1 # Windows PowerShell
-source venv/bin/activate # macOS/Linux
+ - python -m venv venv
+ 
+- venv\Scripts\Activate.ps1 # Windows PowerShell
+
+- source venv/bin/activate # macOS/Linux
 
 
 3. Instalar dependencias:
-pip install -r requirements.txt
+
+- pip install -r requirements.txt
 
 ## Ejecución
-python manage.py check
-python manage.py runserver
+- python manage.py check
+- python manage.py runserver
 
 La aplicación queda disponible en `http://127.0.0.1:8000/`.
 
