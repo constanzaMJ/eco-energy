@@ -1,0 +1,83 @@
+{% extends 'zonas/base.html' %}
+
+{% block titulo %}Detalle de {{ zona.nombre }} · EcoEnergy{% endblock %}
+
+{% block contenido %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'listado_zonas' %}">Zonas</a></li>
+            <li class="breadcrumb-item active">{{ zona.nombre }}</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Detalle de zona: {{ zona.nombre }}</h1>
+
+    <div class="row mb-4 text-center">
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Límite</h6>
+                    <p class="fs-4 mb-0">{{ zona.limite_kwh }} kWh</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Consumo total</h6>
+                    <p class="fs-4 mb-0">{{ zona.consumo_total }} kWh</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Dispositivos</h6>
+                    <p class="fs-4 mb-0">{{ zona.dispositivos|length }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Estado</h6>
+                    {% if zona.estado == 'ALERTA' %}
+                        <span class="badge bg-danger fs-6">⚠ ALERTA</span>
+                    {% else %}
+                        <span class="badge bg-success fs-6">✓ NORMAL</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if zona.dispositivos %}
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Dispositivo</th>
+                        <th>Categoría</th>
+                        <th>Consumo (kWh)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in zona.dispositivos %}
+                        <tr>
+                            <td>{{ d.nombre }}</td>
+                            <td>{{ d.categoria_nombre }}</td>
+                            <td>{{ d.consumo_kwh }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            Esta zona no tiene dispositivos.
+        </div>
+    {% endif %}
+
+    <a href="{% url 'listado_zonas' %}" class="btn btn-outline-success mt-3">← Volver al listado</a>
+{% endblock %}
+}
