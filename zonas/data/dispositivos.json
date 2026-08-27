@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "nombre": "Aire acondicionado oficina",
+    "consumo_kwh": 120,
+    "zona_id": 1,
+    "categoria_id": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Luces pasillo principal",
+    "consumo_kwh": 30,
+    "zona_id": 1,
+    "categoria_id": 2
+  },
+  {
+    "id": 3,
+    "nombre": "Cámara de frío",
+    "consumo_kwh": 250,
+    "zona_id": 1,
+    "categoria_id": 3
+  },
+  {
+    "id": 4,
+    "nombre": "Calefactor sala reuniones",
+    "consumo_kwh": 90,
+    "zona_id": 2,
+    "categoria_id": 1
+  },
+  {
+    "id": 5,
+    "nombre": "Luces recepción",
+    "consumo_kwh": 20,
+    "zona_id": 2,
+    "categoria_id": 2
+  },
+  {
+    "id": 6,
+    "nombre": "Refrigerador bodega",
+    "consumo_kwh": 180,
+    "zona_id": 2,
+    "categoria_id": 3
+  },
+  {
+    "id": 7,
+    "nombre": "Aire acondicionado bodega",
+    "consumo_kwh": 150,
+    "zona_id": 3,
+    "categoria_id": 1
+  },
+  {
+    "id": 8,
+    "nombre": "Luces exteriores",
+    "consumo_kwh": 40,
+    "zona_id": 3,
+    "categoria_id": 2
+  }
+]

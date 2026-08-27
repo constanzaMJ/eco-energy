@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "nombre": "Climatización",
+    "descripcion": "Equipos de calefacción y aire acondicionado"
+  },
+  {
+    "id": 2,
+    "nombre": "Iluminación",
+    "descripcion": "Sistemas de luz interior y exterior"
+  },
+  {
+    "id": 3,
+    "nombre": "Refrigeración",
+    "descripcion": "Equipos de frío industrial y comercial"
+  }
+]
