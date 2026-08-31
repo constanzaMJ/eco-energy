@@ -133,3 +133,59 @@ def obtener_zona_con_detalle(zona_id):
         'consumo_total': consumo_total,
         'estado': estado
     }
+def obtener_resumen_por_zona():
+    """
+    Construye el resumen de consumo agrupado por zona (Fase 2, seccion 3).
+
+    Para cada zona calcula: id, nombre, cantidad de dispositivos asociados,
+    consumo total (suma de consumo_kwh de sus dispositivos), limite_kwh y el
+    estado segun la regla de negocio (3.3):
+        - consumo_total <= limite_kwh -> "DENTRO DEL LIMITE" (verde)
+        - consumo_total >  limite_kwh -> "LIMITE SUPERADO"   (rojo)
+
+    Una zona sin dispositivos se incluye igualmente con cantidad 0,
+    consumo_total 0 y estado "DENTRO DEL LIMITE".
+
+    Devuelve una tupla (resumen_zonas, totales) donde totales contiene los
+    tres valores agregados para las tarjetas superiores: cantidad de zonas,
+    cantidad de dispositivos y consumo total de todos los dispositivos.
+    """
+    zonas = cargar_zonas()
+    dispositivos = cargar_dispositivos()
+
+    resumen_zonas = []
+    total_dispositivos = 0
+    total_consumo = 0
+
+    for zona in zonas:
+        dispositivos_zona = [d for d in dispositivos if d['zona_id'] == zona['id']]
+        cantidad = len(dispositivos_zona)
+        consumo_total = sum(d['consumo_kwh'] for d in dispositivos_zona)
+
+        if consumo_total <= zona['limite_kwh']:
+            estado = 'DENTRO DEL LÍMITE'
+            estado_clase = 'success'
+        else:
+            estado = 'LÍMITE SUPERADO'
+            estado_clase = 'danger'
+
+        resumen_zonas.append({
+            'id': zona['id'],
+            'nombre': zona['nombre'],
+            'cantidad_dispositivos': cantidad,
+            'consumo_total': consumo_total,
+            'limite_kwh': zona['limite_kwh'],
+            'estado': estado,
+            'estado_clase': estado_clase,
+        })
+
+        total_dispositivos += cantidad
+        total_consumo += consumo_total
+
+    totales = {
+        'cantidad_zonas': len(zonas),
+        'cantidad_dispositivos': total_dispositivos,
+        'consumo_total': total_consumo,
+    }
+
+    return resumen_zonas, totales
